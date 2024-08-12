@@ -96,7 +96,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or suggestions, feel free to reach out at great.kian2001@gmail.com.
 
-## Simple ENV Variables
+## Sample ENV Variables
 
 DJANGO_SECRET_KEY='django-insecure-^=qua!t\*oz5zu1b%acht81ol89x=p4+07tq^q-vq$(bb1=jleo'
 DJANGO_DEBUG=True
