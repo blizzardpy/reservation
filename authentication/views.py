@@ -107,7 +107,7 @@ def logout_view(request):
     logout(request)
 
     # Display a success message indicating that the user has been logged out
-    messages.success(request, 'You have been logged out.')
+    # messages.success(request, 'You have been logged out.')
 
     # Redirect the user to the home page
     return redirect('home')
