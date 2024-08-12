@@ -25,30 +25,24 @@ def home_view(request):
         selected_date = request.GET.get(
             'date', datetime.today().strftime('%Y-%m-%d'))
 
-        # Ensure the selected date is not in the past
-        if selected_date < datetime.today().strftime('%Y-%m-%d'):
-            # If the selected date is in the past, there are no available timeslots
-            timeslots = []
-        else:
-            # Get timeslots for the selected date
-            timeslots = TimeSlot.objects.filter(
-                date=selected_date, capacity__gt=0)
+        # Get timeslots for the selected date
+        timeslots = TimeSlot.objects.filter(
+            date__gte=datetime.today().strftime('%Y-%m-%d'),
+            date=selected_date, capacity__gt=0)
 
-            # Exclude past timeslots if the selected date is today
-            if selected_date == datetime.today().strftime('%Y-%m-%d'):
-                timeslots = timeslots.exclude(
-                    start_time__lt=datetime.now().time())
+        # Exclude past timeslots if the selected date is today
+        if selected_date == datetime.today().strftime('%Y-%m-%d'):
+            timeslots = timeslots.exclude(
+                start_time__lt=datetime.now().time())
 
-            # Handle sorting by start time or end time
-            # Default to sorting by start_time
-            sort_by = request.GET.get('sort_by', 'start_time')
-            sort_order = request.GET.get('sort_order', 'asc')
-
-            # Determine the sorting order
-            if sort_order == 'desc':
-                sort_by = f'-{sort_by}'
-
-            timeslots = timeslots.order_by(sort_by)
+        # Handle sorting by start time or end time
+        # Default to sorting by start_time
+        sort_by = request.GET.get('sort_by', 'start_time')
+        sort_order = request.GET.get('sort_order', 'asc')
+        # Determine the sorting order
+        if sort_order == 'desc':
+            sort_by = f'-{sort_by}'
+        timeslots = timeslots.order_by(sort_by)
 
         # Get the user's reserved timeslots
         user_timeslots = TimeSlot.objects.filter(
@@ -63,7 +57,7 @@ def home_view(request):
             'sort_order': sort_order,
         }
 
-    # Render the home.html template with the context
+    # Rnder the home.html template with the context
     return render(request, 'home.html', context)
 
 
