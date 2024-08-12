@@ -98,6 +98,7 @@ If you have any questions or suggestions, feel free to reach out at great.kian20
 
 ## Sample ENV Variables
 
+```bash
 DJANGO_SECRET_KEY='django-insecure-^=qua!t\*oz5zu1b%acht81ol89x=p4+07tq^q-vq$(bb1=jleo'
 DJANGO_DEBUG=True
 POSTGRES_NAME=postgres
@@ -105,5 +106,6 @@ POSTGRES_USER=postgres
 POSTGRES_PASSWORD=Great.kian2001
 POSTGRES_HOST=reservation_db
 POSTGRES_PORT=5432
+```
 
 ---
