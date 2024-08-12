@@ -1,6 +1,6 @@
 services:
-  reservation_api:
-    container_name: reservation_api
+  reservation_web:
+    container_name: reservation_web
     build:
       context: .
     restart: unless-stopped
