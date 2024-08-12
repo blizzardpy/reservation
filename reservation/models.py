@@ -14,7 +14,7 @@ class TimeSlot(models.Model):
 
 class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    timeslot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
+    timeslot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE, related_name='reservations')
     reserved_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
